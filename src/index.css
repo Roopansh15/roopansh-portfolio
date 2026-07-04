@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #05070d;
+  --bg-soft: #0b101a;
+  --surface: rgba(12, 17, 28, 0.72);
+  --surface-strong: rgba(16, 23, 38, 0.88);
+  --line: rgba(255, 255, 255, 0.11);
+  --text: #eef4ff;
+  --muted: #9ca8bd;
+  --subtle: #667085;
+  --cyan: #5ce1e6;
+  --emerald: #4ade80;
+  --amber: #f4b860;
+  --rose: #fb7185;
+  --violet: #a78bfa;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f7fb;
+  --bg-soft: #e9eef7;
+  --surface: rgba(255, 255, 255, 0.78);
+  --surface-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(15, 23, 42, 0.12);
+  --text: #09111f;
+  --muted: #4b5565;
+  --subtle: #697586;
+  --cyan: #057b82;
+  --emerald: #0f8b57;
+  --amber: #ad6200;
+  --rose: #be123c;
+  --violet: #6d28d9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(92, 225, 230, 0.12), transparent 28rem),
+    radial-gradient(circle at 86% 28%, rgba(244, 184, 96, 0.1), transparent 26rem),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 52%, var(--bg) 100%);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.cursor-enabled,
+body.cursor-enabled a,
+body.cursor-enabled button,
+body.cursor-enabled [data-cursor="true"] {
+  cursor: none;
+}
+
+body.cursor-enabled input,
+body.cursor-enabled textarea {
+  cursor: text;
+}
+
+::selection {
+  background: rgba(92, 225, 230, 0.32);
+  color: var(--text);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .glass-panel {
+    border: 1px solid var(--line);
+    background: var(--surface);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 20px 60px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(18px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, var(--text), var(--cyan), var(--amber), var(--text));
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-shell {
+    width: min(100% - 2rem, 1180px);
+    margin-inline: auto;
+  }
+
+  .soft-divider {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
